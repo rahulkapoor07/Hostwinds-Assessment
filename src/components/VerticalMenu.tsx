@@ -1,14 +1,20 @@
-import React,{ReactElement, MouseEvent} from 'react'
+import React,{ReactElement, MouseEvent, useState} from 'react'
 import hostwind from "../hostwind.svg";
 import "./VericalMenu.css";
 import {RiArrowDropDownLine} from "react-icons/ri"; 
+import { SideBarData } from './SidebarData';
+
+interface category{
+    id : string;
+    title : string;
+    path : string;
+    logo : ReactElement;
+    subItems : string[];
+    active?: boolean
+}
 
 interface VerticalMenuProps {
-    categories : {id : string;
-        title : string;
-        path : string;
-        logo : ReactElement;
-        subItems : string[];}[];
+    categories : category[];
     backGroundColor ? : string;
     collapsible ? : boolean;
     receiveClickedSubItem : (str : string) => void;
@@ -18,18 +24,18 @@ interface VerticalMenuProps {
 
 const VerticalMenu : React.FC<VerticalMenuProps> = ({categories, backGroundColor, collapsible,
     receiveClickedSubItem, sideBarOpen, setSideBarOpen})=> {
+    const [array, setArray] = useState(SideBarData);
+
 
     const handleClick = (e : MouseEvent<HTMLLIElement>)=>{
         e.preventDefault();
         receiveClickedSubItem((e.currentTarget.dataset.item)!);
     }
 
-    const handleDropArrowClick = (e : MouseEvent<HTMLSpanElement>)=>{
-        // const itemList : HTMLLIElement | null = document.querySelector(e.currentTarget.dataset.relatedItems!);
-        // console.log(itemList);
-        const itemsClass :string | undefined = e.currentTarget.dataset.relatedItems;
-        const itemList : HTMLLIElement | null = document.querySelector(`.${itemsClass}`);
-        console.log(itemList);
+    const handleDropArrowClick = (index: number)=>{
+        let temporaryArray: category[] = array.slice();
+        temporaryArray[index].active = !temporaryArray[index].active;
+        setArray(temporaryArray);
     }
 
 
@@ -40,16 +46,16 @@ const VerticalMenu : React.FC<VerticalMenuProps> = ({categories, backGroundColor
                     <img className='image' src={hostwind} alt="" />
                 </div>
                 <div className="service-list">
-                    {categories.map(data => (
+                    {categories.map((data, index) => (
                         <div className='service' key={data.id}>
                             <div className='logo'>{data.logo}</div>
                             <div className='category'>
                                 <div className="cat-header">
                                     <h3 className='title'>{data.title}</h3>
-                                    <span data-related-items = {`cat-body-${data.subItems[0]}`}
-                                    onClick={handleDropArrowClick} className='dropdown'><RiArrowDropDownLine/></span>
+                                    <span className='dropdown' data-related-items = {`dropdown${data.active ? '-active': ''}`}
+                                    onClick={() => handleDropArrowClick(index)}><RiArrowDropDownLine/></span>
                                 </div>
-                                <div className={`cat-body-${data.subItems[0]}`}>
+                                <div className={`cat-body${data.active ? '-active': ''}`}>
                                     <div  className='items'>
                                     <ul>
                                         {data.subItems.map((item, key) => (
@@ -60,7 +66,6 @@ const VerticalMenu : React.FC<VerticalMenuProps> = ({categories, backGroundColor
                                 </div>
                             </div>
                             </div>
-                            {/* <div><FaChessKnight size="2rem" color='white' onClick={handleClick}/></div> */}
                         </div>
                     ))}
                 </div>
@@ -75,20 +80,17 @@ const VerticalMenu : React.FC<VerticalMenuProps> = ({categories, backGroundColor
     const CollapsibleForPhone = ()=>{
         return (
             <div>
-                {/* <div className="sidebar-logo">
-                    <img className='image' src={hostwind} alt="" />
-                </div> */}
                 <div className="service-list">
-                    {categories.map(data => (
+                    {categories.map((data, index) => (
                         <div className='service' key={data.id}>
                             <div className='logo'>{data.logo}</div>
                             <div className='category'>
                                 <div className="cat-header">
                                     <h3 className='title'>{data.title}</h3>
-                                    <span 
-                                    onClick={handleDropArrowClick} className='dropdown'><RiArrowDropDownLine/></span>
+                                    <span className='dropdown' data-related-items = {`dropdown${data.active ? '-active': ''}`}
+                                    onClick={() => handleDropArrowClick(index)}><RiArrowDropDownLine/></span>
                                 </div>
-                                <div className="cat-body">
+                                <div className={`cat-body${data.active ? '-active': ''}`}>
                                     <div  className='items'>
                                     <ul>
                                         {data.subItems.map((item, key) => (
@@ -99,7 +101,6 @@ const VerticalMenu : React.FC<VerticalMenuProps> = ({categories, backGroundColor
                                 </div>
                             </div>
                             </div>
-                            {/* <div><FaChessKnight size="2rem" color='white' onClick={handleClick}/></div> */}
                         </div>
                     ))}
                 </div>
@@ -124,9 +125,8 @@ const VerticalMenu : React.FC<VerticalMenuProps> = ({categories, backGroundColor
                             <div className='category'>
                                 <div className="cat-header">
                                     <h3 className='title'>{data.title}</h3>
-                                    {/* <span className='dropdown'><RiArrowDropDownLine/></span> */}
                                 </div>
-                                <div className="cat-body">
+                                <div className="cat-body-active">
                                     <div  className='items'>
                                     <ul>
                                         {data.subItems.map((item, key) => (
@@ -137,7 +137,6 @@ const VerticalMenu : React.FC<VerticalMenuProps> = ({categories, backGroundColor
                                 </div>
                             </div>
                             </div>
-                            {/* <div><FaChessKnight size="2rem" color='white' onClick={handleClick}/></div> */}
                         </div>
                     ))}
                 </div>
@@ -162,9 +161,8 @@ const VerticalMenu : React.FC<VerticalMenuProps> = ({categories, backGroundColor
                             <div className='category'>
                                 <div className="cat-header">
                                     <h3 className='title'>{data.title}</h3>
-                                    {/* <span className='dropdown'><RiArrowDropDownLine/></span> */}
                                 </div>
-                                <div className="cat-body">
+                                <div className="cat-body-active">
                                     <div  className='items'>
                                     <ul>
                                         {data.subItems.map((item, key) => (
@@ -175,7 +173,6 @@ const VerticalMenu : React.FC<VerticalMenuProps> = ({categories, backGroundColor
                                 </div>
                             </div>
                             </div>
-                            {/* <div><FaChessKnight size="2rem" color='white' onClick={handleClick}/></div> */}
                         </div>
                     ))}
                 </div>
@@ -188,11 +185,12 @@ const VerticalMenu : React.FC<VerticalMenuProps> = ({categories, backGroundColor
     }
   return (
       <>
-      {sideBarOpen ?  <div className='VerticalMenuForPhone' style={{"backgroundColor" : `${backGroundColor ? backGroundColor : "black"}`}}>
-{collapsible ? NonCollapsibleForPhone() : CollapsibleForPhone()}
-</div> : <div className='VerticalMenu' style={{"backgroundColor" : `${backGroundColor ? backGroundColor : "black"}`}}>
-         {collapsible ? NonCollapsible() : Collapsible()}
-    </div>}
+      {sideBarOpen &&  <div className='VerticalMenuForPhone' style={{"backgroundColor" : `${backGroundColor ? backGroundColor : "black"}`}}>
+{collapsible ?CollapsibleForPhone() : NonCollapsibleForPhone()}
+</div>} 
+<div className='VerticalMenu' style={{"backgroundColor" : `${backGroundColor ? backGroundColor : "black"}`}}>
+         {collapsible ?Collapsible() : NonCollapsible()}
+    </div>
     </>
   )
 }

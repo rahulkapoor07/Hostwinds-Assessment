@@ -32,7 +32,22 @@
 
 .items ul{
     padding: 0;
-    margin: 0;
+    margin: 3px -52px 0 -40px;
+}
+
+.items ul li{
+    padding: 0 0 0 40px;
+    position: relative;
+}
+
+.items ul li:hover::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 1px;
+    background: #fff;
 }
 
 .service-list .service + .service {
@@ -64,8 +79,6 @@
 .service .category .cat-header{
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
-    /* margin: 0 0 0 10px; */
 }
 
 .service .category .cat-head h3{
@@ -101,13 +114,6 @@
     overflow: visible;
 }
 
-/* .cat-body-Servers .cat-body-Servers{
-    -webkit-transition: all ease-in-out 0.3s;
-    transition        : all ease-in-out 0.3s;
-    max-height: 0;
-    overflow: hidden;   
-} */
-
 
 .subItems{
     list-style:none;
@@ -119,11 +125,10 @@
 .subItems:hover{
     background-color: #1B1A17;
     cursor: pointer;
-    width: 6rem;
 }
 
 .logo{
-    margin: 3px 0 0 0;
+    margin: 0 0 0 0;
     background-color: grey;
     color: white;
     font-size: 12px;
@@ -148,10 +153,14 @@
     font-size: 11px;
 }
 
-/* .dropdown{
+.dropdown{
     cursor: pointer;
     transform: rotate(180%);
-} */
+}
+
+.header-1, .header-2{
+    cursor: pointer;
+}
 
 @media (max-width: 900px){
     .VerticalMenu{
@@ -159,7 +168,7 @@
     }
 
     .VerticalMenuForPhone{
-        display: inline-block;
+    display: inline-block;
     margin: 40px 0 0 2px;
     width: 7.5rem;
     color: whitesmoke;
