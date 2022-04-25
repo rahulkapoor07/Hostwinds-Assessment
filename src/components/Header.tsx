@@ -36,8 +36,8 @@ const Header:React.FC<HeaderProps> = ({isModalOpen, setIsModalOpen,sideBarOpen, 
         </div>
         </div>
         <div className='barCross' onClick={handleBar}>
-        {sideBarOpen ? 
-        <div><FaBars size="1.5rem" color="#2197ff"/></div> :  <div><ImCross size="1.5rem" color="#2197ff"/></div>}
+        {sideBarOpen ? <div><ImCross size="1.5rem" color="#2197ff"/></div> :
+        <div><FaBars size="1.5rem" color="#2197ff"/></div>}
         </div>
     </nav>
     <div className='buttons'>

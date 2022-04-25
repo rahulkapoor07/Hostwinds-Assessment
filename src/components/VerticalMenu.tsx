@@ -188,11 +188,11 @@ const VerticalMenu : React.FC<VerticalMenuProps> = ({categories, backGroundColor
     }
   return (
       <>
-      {sideBarOpen ? <div className='VerticalMenu' style={{"backgroundColor" : `${backGroundColor ? backGroundColor : "black"}`}}>
-         {collapsible ? NonCollapsible() : Collapsible()}
-    </div> : <div className='VerticalMenuForPhone' style={{"backgroundColor" : `${backGroundColor ? backGroundColor : "black"}`}}>
+      {sideBarOpen ?  <div className='VerticalMenuForPhone' style={{"backgroundColor" : `${backGroundColor ? backGroundColor : "black"}`}}>
 {collapsible ? NonCollapsibleForPhone() : CollapsibleForPhone()}
-</div>}
+</div> : <div className='VerticalMenu' style={{"backgroundColor" : `${backGroundColor ? backGroundColor : "black"}`}}>
+         {collapsible ? NonCollapsible() : Collapsible()}
+    </div>}
     </>
   )
 }
