@@ -10,6 +10,7 @@ const App : React.FC = ()=> {
   const [categories, setCategories] = useState<dataType[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [subItem, setSubItem] = useState<string>("");
+  const [sideBarOpen, setSideBarOpen] = useState<boolean>(false);
 
   const receiveClickedSubItem = (str:string) => {
     setSubItem(str);
@@ -20,9 +21,12 @@ const App : React.FC = ()=> {
   },[]);
   return (
     <div className="App">
-     <Header isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+     <Header isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} sideBarOpen={sideBarOpen}
+     setSideBarOpen={setSideBarOpen}
+     />
       <VerticalMenu categories={categories} backGroundColor="" collapsible={false}
-      receiveClickedSubItem={receiveClickedSubItem}/>
+      receiveClickedSubItem={receiveClickedSubItem} sideBarOpen={sideBarOpen}
+      setSideBarOpen={setSideBarOpen}/>
       <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
       <h1 className='final-text'>You are viewing {subItem} page</h1>
     </div>

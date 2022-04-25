@@ -24,3 +24,8 @@
     max-width: 300px;
     min-width: 100px;
 }
+
+.modal-content p{
+    font-weight: 600;
+    cursor: pointer;
+}

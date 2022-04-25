@@ -1,47 +1,88 @@
 .Header{
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   border-bottom-style: ridge;
-}
-
-.header-image{
-    /* visibility: hidden; */
-    width: 115px;
-    height: 115px;
-    margin: -47px 1131px -49px 0;
-}
-
-.profile{
     display: flex;
-    justify-content: right;
-    font-size: 16px;
-}
+    justify-content: space-between;
+    align-items: center;
+    border-bottom-style: ridge;
+    padding: 5px 10px;
+ }
+ 
+ .header-image{
+     /* visibility: hidden; */
+     width: 100px;
+     /* height: 115px; */
+     /* margin: -47px 1131px -49px 0; */
+ }
+ 
+ .profile{
+     display: flex;
+     align-items: center; 
+     justify-content: right;
+     font-size: 16px;
+ }
+ 
+ .profile .profile-title{
+     margin: 0 5px 0 0;
+ }
+ 
+ .dropIcon{
+     cursor: pointer;
+ }
+ 
+ .blue-back{
+     display: none;
+    margin: 5px 0 0 5px;
+    background-color: #2197ff;
+    border: none;
+    color: white;
+    padding: 7px 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 2px;
+    font-size: 13px;
+    }
 
-.profile-title{
-    display: inline;
-    margin: 5px;
-}
+    .white-back{
+        display: none;
+        margin: 5px 0 0 5px;
+        background-color: white;
+        border: none;
+        color: #2197ff;
+        padding: 6px 8px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 2px;
+        border: 1px solid;
+        font-size: 13px;
+        }
+ 
+ @media (max-width:1140px){
+     .profile{
+         font-size: 22px;
+     }
+ 
+     .profile-title{
+         font-size: 16px;
+     }
+    }
 
-.dropIcon{
-    display: inline;
-    margin: 7px 14px 0 0;
-    line-height: 10px;
-    cursor: pointer;
-}
+@media (max-width : 900px){
+    .blue-back{
+    display: inline-block;
+    }
 
-/* @media (min-width:340px){
+    .white-back{
+    display: inline-block;
+    }
+
     .profile{
-        font-size: 50px;
+        display: none;
     }
-} */
+}
 
-@media (max-width:1140px){
-    .profile{
-        font-size: 22px;
+@media (min-width : 901px){
+    .barCross{
+        display: none;
     }
-
-    .dropIcon{
-        margin-top: 12px;
-    }
-} 
+}

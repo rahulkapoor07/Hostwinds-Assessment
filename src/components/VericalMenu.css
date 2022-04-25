@@ -1,42 +1,97 @@
 .VerticalMenu {
-    /* display: none; */
-    /* background-color: grey; */
-    width: 7rem;
+    width: 7.5rem;
     color: whitesmoke;
-    padding-left: 20px;
+    padding-left: 15px;
+    padding-right: 10px;
     height: 100vh;
     position: absolute;
+    overflow-y: auto;
+    z-index: 9;
 }
 
-.image{
-    width: 115px;
-    height: 115px;
-    margin: -40px 0 -36px -10px;
+.VerticalMenuForPhone{
+    display: none;
+    margin: 40px 0 0 2px;
+    width: 7.5rem;
+    color: whitesmoke;
+    padding: 10px 10px 0 15px;
+    height: 100vh;
+    position: absolute;
+    overflow-y: auto;
+    border-radius: 3px;
+    z-index: 9;
+}
+
+.sidebar-logo{
+    padding: 10px 0;
+}
+
+.sidebar-logo img{
+    width: 100px;
+}
+
+.items ul{
+    padding: 0;
+    margin: 0;
+}
+
+.service-list .service + .service {
+    margin: 10px 0 0 0;
+}
+
+.service-list .service{
+    position: relative;
 }
 
 .service{
-    margin-top: -10px;
     display: flex;
 }
 
 .title{
-    display: inline-block;
-    text-align: flex-start;
     color: #2197ff;
-    line-height: 9px;
-    margin-left: 5px;
+    margin: 0 5px 0 0;
     font-size: 11px;
-    margin-bottom: -14px;
 }
 
 .category{
     padding: 0;
-    text-align: flex-start;
 }
+
+.service .category{
+    margin: 0 0 0 10px;
+}
+
+.service .category .cat-header{
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    /* margin: 0 0 0 10px; */
+}
+
+.service .category .cat-head h3{
+    margin: 0;
+}
+
+.service .category .cat-header .dropdown{
+    -webkit-transition: all ease-in-out 0.3s;
+    transition        : all ease-in-out 0.3s;
+}
+
+.service .category .cat-header .dropdown svg{
+    width: 16px;   
+}
+
+/* .cat-body-Servers .cat-body-Servers{
+    -webkit-transition: all ease-in-out 0.3s;
+    transition        : all ease-in-out 0.3s;
+    max-height: 0;
+    overflow: hidden;   
+} */
+
 
 .subItems{
     list-style:none;
-    margin-left: -34px;
+    white-space: nowrap;
     font-size: 10px;
     line-height: 20px;
 }
@@ -48,9 +103,7 @@
 }
 
 .logo{
-    line-height: 2px;
-    margin-left: -8px;
-    margin-top: 8px;
+    margin: 3px 0 0 0;
     background-color: grey;
     color: white;
     font-size: 12px;
@@ -66,27 +119,36 @@
 
 .headers-Item{
     color: #2197ff;
-    line-height: 9px;
-    margin-left: 5px;
+    margin: 10px 0 0 22px;
     font-size: 11px;
-    margin-bottom: -10px;
 }
 
 .headerItem{
     display: none;
-    margin-top: -10px;
     font-size: 11px;
-    margin-left: 9px;
-    margin-bottom: 20px;
 }
 
 .dropdown{
-    float: right;
+    cursor: pointer;
+    transform: rotate(180%);
 }
 
 @media (max-width: 900px){
     .VerticalMenu{
         display: none;
+    }
+
+    .VerticalMenuForPhone{
+        display: inline-block;
+    margin: 40px 0 0 2px;
+    width: 7.5rem;
+    color: whitesmoke;
+    padding: 10px 10px 0 15px;
+    height: 100vh;
+    position: absolute;
+    overflow-y: auto;
+    border-radius: 3px;
+    z-index: 9;
     }
 
     .headerItem{
