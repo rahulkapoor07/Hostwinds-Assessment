@@ -1,0 +1,95 @@
+.VerticalMenu {
+    /* display: none; */
+    /* background-color: grey; */
+    width: 7rem;
+    color: whitesmoke;
+    padding-left: 20px;
+    height: 100vh;
+    position: absolute;
+}
+
+.image{
+    width: 115px;
+    height: 115px;
+    margin: -40px 0 -36px -10px;
+}
+
+.service{
+    margin-top: -10px;
+    display: flex;
+}
+
+.title{
+    display: inline-block;
+    text-align: flex-start;
+    color: #2197ff;
+    line-height: 9px;
+    margin-left: 5px;
+    font-size: 11px;
+    margin-bottom: -14px;
+}
+
+.category{
+    padding: 0;
+    text-align: flex-start;
+}
+
+.subItems{
+    list-style:none;
+    margin-left: -34px;
+    font-size: 10px;
+    line-height: 20px;
+}
+
+.subItems:hover{
+    background-color: #1B1A17;
+    cursor: pointer;
+    width: 6rem;
+}
+
+.logo{
+    line-height: 2px;
+    margin-left: -8px;
+    margin-top: 8px;
+    background-color: grey;
+    color: white;
+    font-size: 12px;
+    width: 0;
+    height: 0;
+    padding: 2px 14px 14px 2px;
+    border-radius: 3px;
+}
+
+.hideItems {
+    display: none;
+}
+
+.headers-Item{
+    color: #2197ff;
+    line-height: 9px;
+    margin-left: 5px;
+    font-size: 11px;
+    margin-bottom: -10px;
+}
+
+.headerItem{
+    display: none;
+    margin-top: -10px;
+    font-size: 11px;
+    margin-left: 9px;
+    margin-bottom: 20px;
+}
+
+.dropdown{
+    float: right;
+}
+
+@media (max-width: 900px){
+    .VerticalMenu{
+        display: none;
+    }
+
+    .headerItem{
+        display: inline-block;
+    }
+}

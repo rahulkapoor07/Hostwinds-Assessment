@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import {SideBarData} from "./components/SidebarData";
+import "./App.css";
+import VerticalMenu from './components/VerticalMenu';
+import {dataType} from "./sideBarData.model"
+import Header from './components/Header';
+import Modal from './components/Modal';
 
-function App() {
+const App : React.FC = ()=> {
+  const [categories, setCategories] = useState<dataType[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [subItem, setSubItem] = useState<string>("");
+
+  const receiveClickedSubItem = (str:string) => {
+    setSubItem(str);
+  }
+
+  useEffect(()=>{
+    setCategories([...SideBarData]);
+  },[]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Header isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+      <VerticalMenu categories={categories} backGroundColor="" collapsible={false}
+      receiveClickedSubItem={receiveClickedSubItem}/>
+      <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+      <h1 className='final-text'>You are viewing {subItem} page</h1>
     </div>
   );
 }
